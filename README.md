@@ -1,0 +1,1 @@
+Hello STC15_Board_XG
