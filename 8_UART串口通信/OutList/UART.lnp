@@ -1,0 +1,6 @@
+".\OutList\STARTUP.obj",
+".\OutList\main.obj",
+".\OutList\SegLED.obj",
+".\OutList\Uart.obj" 
+TO ".\OutList\UART" 
+PRINT(".\UART.m51") RAMSIZE(256) 
