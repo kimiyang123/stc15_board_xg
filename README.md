@@ -8,6 +8,9 @@
 
 ### 一、运行环境
 
+	1. 编译软件：KEIL c UV4
+	2. CPU: STC15F2K60S2 或 类似系列CPU
+	3. 硬件平台：STC15_Board_XG 开发板
 1. 编译软件：Keilc UV4
 
 2. CPU： STC15F2K60S2 或 类似51系列CPU
