@@ -1,6 +1,8 @@
 # Hello STC15_Board_XG
 
- ![STC15_board_XG_LCM2004](Img\STC15_board_XG_LCM2004.jpg)
+ ![STC15_board_XG_LCM2004](https://code.csdn.net/kimiyang123/stc15_board_xg/blob/master/Img/STC15_board_XG_LCM2004.jpg)
+
+
 
 > 本开源内容为STC15单片机的学习教程实验案例，将通过多个例子来学习STC15系列单片机的资源的使用。
 >
@@ -8,19 +10,18 @@
 
 ### 一、运行环境
 
-	1. 编译软件：KEIL c UV4
-	2. CPU: STC15F2K60S2 或 类似系列CPU
-	3. 硬件平台：STC15_Board_XG 开发板
 1. 编译软件：Keilc UV4
 
 2. CPU： STC15F2K60S2 或 类似51系列CPU
 
 3. 硬件平台：STC15_Board_XG 开发板 ↓
 
-    ![STC15_board_XG](Img\STC15_board_XG.jpg)
+    ![STC15_board_XG](https://code.csdn.net/kimiyang123/stc15_board_xg/blob/master/Img/STC15_board_XG.jpg)
 
 
 ### 二、教程说明
+
+> --- 敬请期待 ---
 
 
 
