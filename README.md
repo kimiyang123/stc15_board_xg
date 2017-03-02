@@ -1,6 +1,8 @@
 # Hello STC15_Board_XG
 
- ![STC15_board_XG_LCM2004](https://code.csdn.net/kimiyang123/stc15_board_xg/blob/master/Img/STC15_board_XG_LCM2004.jpg)
+[TOC]
+
+![STC15_board_XG_LCM2004](https://code.csdn.net/kimiyang123/stc15_board_xg/blob/master/Img/STC15_board_XG_LCM2004.jpg)
 
 
 
@@ -9,6 +11,7 @@
 > 本开源代码调试平台使用的MCU为：STC15F2K60S2，也可用于其他类似的51系列单片机
 
 ### 一、运行环境
+
 
 1. 编译软件：Keilc UV4
 
