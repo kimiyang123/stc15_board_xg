@@ -19,32 +19,32 @@ void KDelay1ms()		//@11.0592MHz
 unsigned char getKeypad(void)
 {
 	static unsigned char perKey = 0;
-	unsigned char keyValue=0xff; //¿Õ°´¼üÖµ
+	unsigned char keyValue=0xff; //ç©ºæŒ‰é”®å€¼
 	unsigned char keyRow,keyCol;
-		/**ÒÔÏÂÎª±£´æÊıÂë¹Ü×´Ì¬**/
+		/**ä»¥ä¸‹ä¸ºä¿å­˜æ•°ç ç®¡çŠ¶æ€**/
 		unsigned char p0buf,p2buf;
 		P15 = 1;
 		p2buf = P2;
 		p0buf = P0;
 		P0 = 0x00;
 		/**end**/
-	//µÍËÄÎ»¿ªÂ©Ä£Ê½
+	//ä½å››ä½å¼€æ¼æ¨¡å¼
 	P2M1 = 0x0f;
 	P2M0 = 0x0f;
-	//¸ßËÄÎ»Êä³ö1£¬µÍËÄÎ»Êä³ö0
+	//é«˜å››ä½è¾“å‡º1ï¼Œä½å››ä½è¾“å‡º0
 	KeyPad_Port = 0xf0;
-	//¶ÁÈ¡¸ßËÄÎ»¹Ü½ÅÖµ£¬ÅĞ¶Ï°´¼üÔÚÄÄĞĞ¡£
+	//è¯»å–é«˜å››ä½ç®¡è„šå€¼ï¼Œåˆ¤æ–­æŒ‰é”®åœ¨å“ªè¡Œã€‚
 	keyRow =((~KeyPad_Port>>4) & 0x0f);
 	if(keyRow != 0)
 	{
 		KDelay1ms();
-		//°´¼üÉ¨ÃèÏû¶¶
+		//æŒ‰é”®æ‰«ææ¶ˆæŠ–
 		if(keyRow == ((~KeyPad_Port>>4) & 0x0f)) 
 		{
-				//¸ßËÄÎ»ÉèÎª¿ªÂ©Ä£Ê½
+				//é«˜å››ä½è®¾ä¸ºå¼€æ¼æ¨¡å¼
 				P2M1 = 0xf0;
 				P2M0 = 0xf0;
-				//¸ßËÄÎ»Êä³ö0£¬µÍËÄÎ»Êä³ö1
+				//é«˜å››ä½è¾“å‡º0ï¼Œä½å››ä½è¾“å‡º1
 				KeyPad_Port = 0x0f;
 				keyCol = (~(KeyPad_Port) & 0x0f);
 				if(keyCol != 0)
@@ -78,14 +78,14 @@ unsigned char getKeypad(void)
 						break;
 					}
 					keyValue = keyCol+(keyRow*4);
-					//¼ì²â°´¼üÊÇ·ñËÉ¿ª¹ı
+					//æ£€æµ‹æŒ‰é”®æ˜¯å¦æ¾å¼€è¿‡
 					if(keyValue != perKey)
-					{//ĞÂ°´¼ü
+					{//æ–°æŒ‰é”®
 						perKey = keyValue;
 					}
 					else
-					{//Î´ËÉ¿ª¹ı
-						keyValue = 0xff;  //Ç¿ÖÆËÍ¿Õ°´¼üÖµ
+					{//æœªæ¾å¼€è¿‡
+						keyValue = 0xff;  //å¼ºåˆ¶é€ç©ºæŒ‰é”®å€¼
 					}
 				}
 				else
@@ -108,7 +108,7 @@ unsigned char getKeypad(void)
 	
 	P2M1 = 0x00;
 	P2M0 = 0x00;
-	/**»Ö¸´ÊıÂë¹Ü×´Ì¬**/
+	/**æ¢å¤æ•°ç ç®¡çŠ¶æ€**/
 	P0 = p0buf;
 	P2 = p2buf;
 	P15 = 0;

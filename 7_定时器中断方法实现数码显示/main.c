@@ -1,93 +1,91 @@
 //************************************
-//STC_XGboard 51µ¥Æ¬»úÑ§Ï°°å
-//ÏîÄ¿ËµÃ÷£ºÊ¹ÓÃº¯Êı·½·¨ÊµÏÖÊıÂë¹ÜÏÔÊ¾ÊıÖµ
+//STC_XGboard 51å•ç‰‡æœºå­¦ä¹ æ¿
+//é¡¹ç›®è¯´æ˜ï¼š
 //author:Kimiyang
 //
-//20170110
+//DATE:20170110
 //************************************
 
-//#include <STC15Fxxxx.H>
-#include <STC15f2K60S2.h>
-#include <intrins.h>
-#include "SegLED.h"  //  ×Ô¶¨ÒåÊıÂë¹ÜÏÔÊ¾º¯Êı¿â
+#include "SegLED.h"
 
 
-void Delay1ms()		//@11.0592MHz
+//æ•°ç ç®¡è¯‘ç è¡¨
+//codeè¡¨ç¤ºå˜é‡å­˜å‚¨äºflashä¸­ï¼Œ
+//ä¸€èˆ¬å¸¸é‡ä½¿ç”¨Codeå…³é”®å­—ã€‚
+unsigned char code SegTab[10] = {0x3f,0x06,0x5b,0x4f,0x66,
+																0x6d,0x7d,0x07,0x7f,0x6f};
+//8ä¸ªæ˜¾ç¤ºç¼“å­˜åŒº
+unsigned char DispBuf[8];
+
+//************************************
+//*å‡½æ•°åç§°ï¼šSegLED_Init
+//*å‡½æ•°åŠŸèƒ½ï¼šæ•°ç ç®¡ç«¯å£åˆå§‹åŒ–
+//*å‚    æ•°ï¼š
+//*è¿” å› å€¼ï¼š
+//************************************
+void SegLED_Init()
 {
-	unsigned char i, j;
-
-	_nop_();
-	_nop_();
-	_nop_();
-	i = 11;
-	j = 190;
-	do
+	unsigned char i=0;
+	//è®¾ç½®P0 P2 å£å¼ºä¸Šæ‹‰è¾“å‡ºæ¨¡å¼
+	P0M1 = 0x00;
+	P0M0 = 0xFF;
+	
+	P2M1 = 0x00;
+	P2M0 = 0xFF;
+	
+	for(i=0;i<8;i++)
 	{
-		while (--j);
-	} while (--i);
-}
-
-
-
-void DelayMs(unsigned int Dtime)
-{
-	for(;Dtime>0;Dtime--)
-		Delay1ms();
-}
-
-void Timer0Init(void);
-
-unsigned char hour,min,sec;
-int main()
-{
-  
-	SegLED_Init(); //ÊıÂë¹Ü¶Ë¿ÚµÈ³õÊ¼»¯
-	
-	LED_Show_int(hour,0,2); //ÏÔÊ¾56
-				//ÏÔÊ¾Êı¾İ,ÏÔÊ¾Î»ÖÃ,ÏÔÊ¾Î»Êı
-	LED_Show_int(min,3,2); //ÏÔÊ¾26
-	LED_Show_int(sec,6,2); //ÏÔÊ¾59
-	DispBuf[2] = 0x40;
-	DispBuf[5] = 0x40;
-	
-	P40 = 0;
-	
-	Timer0Init();
-	EA = 1;
-	while(1)
-	{
-		LED_Show_int(hour,0,2); 
-		LED_Show_int(min,3,2); 
-		LED_Show_int(sec,6,2); 
-		DelayMs(1000);
+		DispBuf[i] = 0x00;//SegTab[0];
 	}
+
 }
 
 
-void Timer0_Rountine(void) interrupt 1
+
+void ScanSegLED()
 {
-	static unsigned long Tcnt=0;
-	TR0 = 0;
-	Tcnt++;
-	if(Tcnt%2 == 0)
+	//staticé™æ€å˜é‡å…³é”®å­—ï¼Œ
+	//é€€å‡ºå­å‡½æ•°é™æ€å˜é‡ä»»ç„¶å­˜åœ¨
+	static unsigned char ScanCnt=0;
+	SegOE = 1;
+	SegLED_Data = DispBuf[7-ScanCnt];
+	SegCom_CS = ~(1<<ScanCnt);
+	SegOE = 0;  //æ‰“å¼€ä½¿èƒ½å¼€å§‹æ˜¾ç¤º
+	if(ScanCnt++ > 7) ScanCnt = 0;
+	//DelayMs(2);
+}
+
+unsigned long Pow10(unsigned char x)
+{
+	unsigned long rValue=10;
+	if(x==0)
+		return 1;
+	for(;x>1;x--)
 	{
-		ScanSegLED();
+		rValue *=10;
 	}
+	return rValue;
 	
-	if(Tcnt%1000UL == 0)
+}
+
+
+void LED_Show_int(unsigned int num,
+									unsigned char StartBit,
+									unsigned char ShowBit)
+{
+	unsigned char i;
+	unsigned long temp=0;
+	if(ShowBit > 5 || ShowBit==0) ShowBit = 5;
+	for(i=0;i<ShowBit;i++)
 	{
-		if(sec++>59)
-		{
-			sec = 0;
-			if(min++>59)
-			{
-				min = 0;
-				if(hour++>59)
-				{
-					hour=0;
-				}
-			}
-		}
+		temp = Pow10((ShowBit-1-i));
+		temp = num/temp%10;
+		DispBuf[StartBit+i] = SegTab[temp];
+		if(StartBit+i >= 7) break;
+	}
+//	if(StartBit>=8) 
+//	DispBuf[7-StartBit]
+}
 	}
 	//TMOD &= 0xF0;		//???????
 	//TMOD |= 0x01;		//???????

@@ -28,7 +28,7 @@ void _LCM_DelayMs(unsigned int dt)
 }
 
 
-//LCD1602Ğ´ÈëÃüÁîº¯Êı
+//LCD1602å†™å…¥å‘½ä»¤å‡½æ•°
 void LCM_Write_Com(unsigned char com)
 {
 	LCM_EN = 0;
@@ -45,7 +45,7 @@ void LCM_Write_Com(unsigned char com)
 	_LCM_DelayMs(1);
 }
 
-//LCD1602Ğ´ÈëÊı¾İº¯Êı
+//LCD1602å†™å…¥æ•°æ®å‡½æ•°
 void LCM_Write_Data(unsigned char Data)
 {
 	LCM_EN = 0;
@@ -64,7 +64,7 @@ void LCM_Write_Data(unsigned char Data)
 
 }
 
-//LCD1602ÇåÆÁº¯Êı
+//LCD1602æ¸…å±å‡½æ•°
 void LCM_Clear(void)
 {
 	LCM_Write_Com(0x01);
@@ -129,12 +129,12 @@ void LCM_Display_Num(unsigned char x,
 
 void LCM_Init(void)
 {
-	P2 = 0x00; //·ÀÖ¹P2¿Ú¸´ÓÃµÄÊıÂë¹Ü¶ÔÆäÓ°Ïì
-	LCM_BK = 1;//±³¹â´ò¿ª
-	P15 = 0; //HC245Ê¹ÄÜ
+	P2 = 0x00; //é˜²æ­¢P2å£å¤ç”¨çš„æ•°ç ç®¡å¯¹å…¶å½±å“
+	LCM_BK = 1;//èƒŒå…‰æ‰“å¼€
+	P15 = 0; //HC245ä½¿èƒ½
 	
 	
-	LCM_Write_Com(0x38);  //ÉèÖÃÏÔÊ¾Ä£Ê½
+	LCM_Write_Com(0x38);  //è®¾ç½®æ˜¾ç¤ºæ¨¡å¼
 	_LCM_DelayMs(5);
 	LCM_Write_Com(0x38);
 	_LCM_DelayMs(5);
@@ -143,15 +143,15 @@ void LCM_Init(void)
 	LCM_Write_Com(0x38);
 	_LCM_DelayMs(5);
 
-	LCM_Write_Com(0x08);	//ÏÔÊ¾¹Ø±Õ
+	LCM_Write_Com(0x08);	//æ˜¾ç¤ºå…³é—­
 	_LCM_DelayMs(5);
 	
-	LCM_Write_Com(0x0f);	//ÏÔÊ¾¿ª¼°¹â±êÉèÖÃ
+	LCM_Write_Com(0x0f);	//æ˜¾ç¤ºå¼€åŠå…‰æ ‡è®¾ç½®
 	_LCM_DelayMs(5);
-	LCM_Write_Com(0x0e);	//ÏÔÊ¾¿ª¼°¹â±êÉèÖÃ
+	LCM_Write_Com(0x0e);	//æ˜¾ç¤ºå¼€åŠå…‰æ ‡è®¾ç½®
 	_LCM_DelayMs(5);
 
-	LCM_Write_Com(0x01);	//ÏÔÊ¾ÇåÆÁ
+	LCM_Write_Com(0x01);	//æ˜¾ç¤ºæ¸…å±
 	_LCM_DelayMs(5);
 
 	//LCM_Write_Com(0X02);

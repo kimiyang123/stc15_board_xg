@@ -1,6 +1,6 @@
 //************************************
-//STC_XGboard 51µ¥Æ¬»úÑ§Ï°°å
-//ÏîÄ¿ËµÃ÷£ºÑ§Ï°4X4°´¼üÉ¨Ãè³ÌĞò
+//STC_XGboard 51å•ç‰‡æœºå­¦ä¹ æ¿
+//é¡¹ç›®è¯´æ˜ï¼šå­¦ä¹ 4X4æŒ‰é”®æ‰«æç¨‹åº
 //author:Kimiyang
 //
 //20170118
@@ -8,7 +8,7 @@
 
 #include <STC15f2K60S2.h>
 #include <intrins.h>
-#include "SegLED.h"  //  ×Ô¶¨ÒåÊıÂë¹ÜÏÔÊ¾º¯Êı¿â
+#include "SegLED.h"  //  è‡ªå®šä¹‰æ•°ç ç®¡æ˜¾ç¤ºå‡½æ•°åº“
 #include "keypad.h"
 #include "UART.h"
 #include "STC_ADC.h"
@@ -45,12 +45,12 @@ unsigned char hour,min,sec;
 int main()
 {
   unsigned int ADC_Value;
-	P40 = 0; //beep¹Ø±Õ
-	SegLED_Init(); //ÊıÂë¹Ü¶Ë¿ÚµÈ³õÊ¼»¯
+	P40 = 0; //beepå…³é—­
+	SegLED_Init(); //æ•°ç ç®¡ç«¯å£ç­‰åˆå§‹åŒ–
 	UartInit();
 	DelayMs(500);
 	
-	InitADC();  //³õÊ¼»¯ADC
+	InitADC();  //åˆå§‹åŒ–ADC
 	
 	Timer0Init();
 	EA = 1;

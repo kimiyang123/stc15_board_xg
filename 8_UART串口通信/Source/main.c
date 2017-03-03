@@ -1,6 +1,6 @@
 //************************************
-//STC_XGboard 51µ¥Æ¬»úÑ§Ï°°å
-//ÏîÄ¿ËµÃ÷£ºÑ§Ï°4X4°´¼üÉ¨Ãè³ÌĞò
+//STC_XGboard 51å•ç‰‡æœºå­¦ä¹ æ¿
+//é¡¹ç›®è¯´æ˜ï¼šå­¦ä¹ 4X4æŒ‰é”®æ‰«æç¨‹åº
 //author:Kimiyang
 //
 //20170111
@@ -8,7 +8,7 @@
 
 #include <STC15f2K60S2.h>
 #include <intrins.h>
-#include "SegLED.h"  //  ×Ô¶¨ÒåÊıÂë¹ÜÏÔÊ¾º¯Êı¿â
+#include "SegLED.h"  //  è‡ªå®šä¹‰æ•°ç ç®¡æ˜¾ç¤ºå‡½æ•°åº“
 
 #include "UART.h"
 
@@ -50,10 +50,10 @@ unsigned char Time=0;
 int main()
 {
 	unsigned char num=0;
-	P40 = 0; //beep¹Ø±Õ
+	P40 = 0; //beepå…³é—­
 	
 	Timer0Init();
-	UartInit(); //´®¿Ú³õÊ¼»¯ ²¨ÌØÂÊ£º115200bps
+	UartInit(); //ä¸²å£åˆå§‹åŒ– æ³¢ç‰¹ç‡ï¼š115200bps
 	
 	EA = 1;
 	Uart_SendString("Hello STC51\n");
@@ -73,7 +73,7 @@ void Timer0_Rountine(void) interrupt 1
 	TR0 = 0;
 	tickes++;
 	
-	//Beep¿ØÖÆ beepEn±äÁ¿´óÓÚ1Ê±·äÃùÆ÷Ïì
+	//Beepæ§åˆ¶ beepEnå˜é‡å¤§äº1æ—¶èœ‚é¸£å™¨å“
 	if(tickes%1 == 0 && beepEn>0)
 	{
 			P40 = ~P40;

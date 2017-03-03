@@ -3,7 +3,7 @@
 
 	#include <STC15f2K60S2.h>
 
-	//4X4 ¼üÅÌ¹Ü½Å
+	//4X4 é”®ç›˜ç®¡è„š
 	#define KeyPad_Port		P2
 
 	unsigned char getKeypad(void);

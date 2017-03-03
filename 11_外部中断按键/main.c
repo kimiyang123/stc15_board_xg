@@ -1,6 +1,6 @@
 //************************************
-//STC_XGboard 51��Ƭ��ѧϰ��
-//��Ŀ˵����
+//STC_XGboard 51单片机学习板
+//项目说明：
 //author:Kimiyang
 //
 //DATE:20170215
@@ -12,28 +12,28 @@
 
 unsigned char showNum = 0;
 
-//�ⲿ�ж�0��ʼ������
+//外部中断0初始化程序
 void INT0_Init()
 {
 //    INT0 = 1;
-    IT0 = 1;      //����INT0�ж�����(1:�½��� 0:������ )
+    IT0 = 1;      //设置INT0中断类型(1:下降沿 0:上升沿 )
     EX0 = 1;      
 }
 
-//�ⲿ�ж�1��ʼ������
+//外部中断1初始化程序
 void INT1_Init()
 {
-    IT1 = 1;      //����INT0�ж�����(1:�½��� 0:������ )
+    IT1 = 1;      //设置INT0中断类型(1:下降沿 0:上升沿 )
     EX1 = 1;      
 }
-//�ⲿ�жϺ��� INT0���ж�����Ϊ0(����ֲ�P544)
+//外部中断函数 INT0的中断向量为0(详见手册P544)
 void ExInt0() interrupt 0
 {
 	P55 = !P55;
 	showNum++;
 	LED_Show_int(showNum,0,3);
 }
-//�ⲿ�жϺ��� INT1���ж�����Ϊ2
+//外部中断函数 INT1的中断向量为2
 void ExInt1() interrupt 2
 {
 	P55 = !P55;
