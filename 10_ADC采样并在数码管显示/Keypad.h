@@ -9,16 +9,22 @@
 	unsigned char getKeypad(void);
 
 
-	#define KEY_NUM0	0
-	#define KEY_NUM1	1
-	#define KEY_NUM2	2
-	#define KEY_NUM3	3
+	#define KEY_NUM0	13
+	#define KEY_NUM1	0
+	#define KEY_NUM2	1
+	#define KEY_NUM3	2
 	#define KEY_NUM4	4
 	#define KEY_NUM5	5
 	#define KEY_NUM6	6
-	#define KEY_NUM7	7
-	#define KEY_NUM8	8
-	#define KEY_NUM9	9
+	#define KEY_NUM7	8
+	#define KEY_NUM8	9
+	#define KEY_NUM9	10
+	#define KEY_A		3
+	#define KEY_B		7
+	#define KEY_C		11
+	#define KEY_D		15
+	#define KEY_OK		14
+	#define KEY_CANCLE	12
 
 
 

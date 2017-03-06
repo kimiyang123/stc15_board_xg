@@ -1,91 +1,93 @@
 //************************************
 //STC_XGboard 51单片机学习板
-//项目说明：
+//项目说明：使用函数方法实现数码管显示数值
 //author:Kimiyang
 //
-//DATE:20170110
+//20170110
 //************************************
 
-#include "SegLED.h"
+//#include <STC15Fxxxx.H>
+#include <STC15f2K60S2.h>
+#include <intrins.h>
+#include "SegLED.h"  //  自定义数码管显示函数库
 
 
-//数码管译码表
-//code表示变量存储于flash中，
-//一般常量使用Code关键字。
-unsigned char code SegTab[10] = {0x3f,0x06,0x5b,0x4f,0x66,
-																0x6d,0x7d,0x07,0x7f,0x6f};
-//8个显示缓存区
-unsigned char DispBuf[8];
-
-//************************************
-//*函数名称：SegLED_Init
-//*函数功能：数码管端口初始化
-//*参    数：
-//*返 回 值：
-//************************************
-void SegLED_Init()
+void Delay1ms()		//@11.0592MHz
 {
-	unsigned char i=0;
-	//设置P0 P2 口强上拉输出模式
-	P0M1 = 0x00;
-	P0M0 = 0xFF;
-	
-	P2M1 = 0x00;
-	P2M0 = 0xFF;
-	
-	for(i=0;i<8;i++)
+	unsigned char i, j;
+
+	_nop_();
+	_nop_();
+	_nop_();
+	i = 11;
+	j = 190;
+	do
 	{
-		DispBuf[i] = 0x00;//SegTab[0];
-	}
-
+		while (--j);
+	} while (--i);
 }
 
 
 
-void ScanSegLED()
+void DelayMs(unsigned int Dtime)
 {
-	//static静态变量关键字，
-	//退出子函数静态变量任然存在
-	static unsigned char ScanCnt=0;
-	SegOE = 1;
-	SegLED_Data = DispBuf[7-ScanCnt];
-	SegCom_CS = ~(1<<ScanCnt);
-	SegOE = 0;  //打开使能开始显示
-	if(ScanCnt++ > 7) ScanCnt = 0;
-	//DelayMs(2);
+	for(;Dtime>0;Dtime--)
+		Delay1ms();
 }
 
-unsigned long Pow10(unsigned char x)
+void Timer0Init(void);
+
+unsigned char hour,min,sec;
+int main()
 {
-	unsigned long rValue=10;
-	if(x==0)
-		return 1;
-	for(;x>1;x--)
-	{
-		rValue *=10;
-	}
-	return rValue;
+  
+	SegLED_Init(); //数码管端口等初始化
 	
-}
-
-
-void LED_Show_int(unsigned int num,
-									unsigned char StartBit,
-									unsigned char ShowBit)
-{
-	unsigned char i;
-	unsigned long temp=0;
-	if(ShowBit > 5 || ShowBit==0) ShowBit = 5;
-	for(i=0;i<ShowBit;i++)
+	LED_Show_int(hour,0,2); //显示56
+				//显示数据,显示位置,显示位数
+	LED_Show_int(min,3,2); //显示26
+	LED_Show_int(sec,6,2); //显示59
+	DispBuf[2] = 0x40;
+	DispBuf[5] = 0x40;
+	
+	P40 = 0;
+	
+	Timer0Init();
+	EA = 1;
+	while(1)
 	{
-		temp = Pow10((ShowBit-1-i));
-		temp = num/temp%10;
-		DispBuf[StartBit+i] = SegTab[temp];
-		if(StartBit+i >= 7) break;
+		LED_Show_int(hour,0,2); 
+		LED_Show_int(min,3,2); 
+		LED_Show_int(sec,6,2); 
+		DelayMs(1000);
 	}
-//	if(StartBit>=8) 
-//	DispBuf[7-StartBit]
 }
+
+
+void Timer0_Rountine(void) interrupt 1
+{
+	static unsigned long Tcnt=0;
+	TR0 = 0;
+	Tcnt++;
+	if(Tcnt%2 == 0)
+	{
+		ScanSegLED();
+	}
+	
+	if(Tcnt%1000UL == 0)
+	{
+		if(sec++>59)
+		{
+			sec = 0;
+			if(min++>59)
+			{
+				min = 0;
+				if(hour++>59)
+				{
+					hour=0;
+				}
+			}
+		}
 	}
 	//TMOD &= 0xF0;		//???????
 	//TMOD |= 0x01;		//???????

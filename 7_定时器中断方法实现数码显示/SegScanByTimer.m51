@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        01/10/2017  23:22:47  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        03/05/2017  12:24:55  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -41,14 +41,14 @@ LINK MAP OF MODULE:  .\OutList\SegScanByTimer (?C_STARTUP)
             CODE    01EFH     008DH     UNIT         ?PR?_LED_SHOW_INT?SEGLED
             CODE    027CH     008CH     UNIT         ?C_C51STARTUP
             CODE    0308H     005BH     UNIT         ?PR?MAIN?MAIN
-            CODE    0363H     0043H     UNIT         ?PR?_POW10?SEGLED
-            CODE    03A6H     002DH     UNIT         ?PR?SCANSEGLED?SEGLED
-            CODE    03D3H     0018H     UNIT         ?PR?_DELAYMS?MAIN
-            CODE    03EBH     0015H     UNIT         ?PR?SEGLED_INIT?SEGLED
-            CODE    0400H     0013H     UNIT         ?PR?TIMER0INIT?MAIN
-            CODE    0413H     000CH     UNIT         ?PR?DELAY1MS?MAIN
-            CODE    041FH     000AH     UNIT         ?C_INITSEG
-            CODE    0429H     000AH     UNIT         ?CO?SEGLED
+            CODE    0363H     0044H     UNIT         ?PR?SCANSEGLED?SEGLED
+            CODE    03A7H     0043H     UNIT         ?PR?_POW10?SEGLED
+            CODE    03EAH     0018H     UNIT         ?PR?_DELAYMS?MAIN
+            CODE    0402H     0015H     UNIT         ?PR?SEGLED_INIT?SEGLED
+            CODE    0417H     0013H     UNIT         ?PR?TIMER0INIT?MAIN
+            CODE    042AH     000CH     UNIT         ?PR?DELAY1MS?MAIN
+            CODE    0436H     000AH     UNIT         ?C_INITSEG
+            CODE    0440H     000AH     UNIT         ?CO?SEGLED
 
 
 
@@ -59,7 +59,7 @@ SEGMENT                            DATA_GROUP
   +--> CALLED SEGMENT            START    LENGTH
 ------------------------------------------------
 ?C_C51STARTUP                    -----    -----
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/10/2017  23:22:47  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/05/2017  12:24:55  PAGE 2
 
 
   +--> ?PR?MAIN?MAIN
@@ -119,7 +119,7 @@ SYMBOL TABLE OF MODULE:  .\OutList\SegScanByTimer (?C_STARTUP)
   N:0000H         SYMBOL        XDATASTART
   C:0000H         LINE#         126
   C:027CH         LINE#         133
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/10/2017  23:22:47  PAGE 3
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/05/2017  12:24:55  PAGE 3
 
 
   C:027EH         LINE#         134
@@ -136,7 +136,7 @@ SYMBOL TABLE OF MODULE:  .\OutList\SegScanByTimer (?C_STARTUP)
   D:00A0H         PUBLIC        P2
   D:00B0H         PUBLIC        P3
   D:00C0H         PUBLIC        P4
-  C:0413H         PUBLIC        Delay1ms
+  C:042AH         PUBLIC        Delay1ms
   D:00C8H         PUBLIC        P5
   B:00A8H.7       PUBLIC        EA
   D:00E8H         PUBLIC        P6
@@ -145,7 +145,7 @@ SYMBOL TABLE OF MODULE:  .\OutList\SegScanByTimer (?C_STARTUP)
   D:00B8H         PUBLIC        IP
   D:00D8H         PUBLIC        CCON
   C:0308H         PUBLIC        main
-  C:03D3H         PUBLIC        _DelayMs
+  C:03EAH         PUBLIC        _DelayMs
   D:0098H         PUBLIC        SCON
   B:00C0H.0       PUBLIC        P40
   D:0089H         PUBLIC        TMOD
@@ -156,7 +156,7 @@ SYMBOL TABLE OF MODULE:  .\OutList\SegScanByTimer (?C_STARTUP)
   D:0025H         PUBLIC        min
   B:00A8H.1       PUBLIC        ET0
   B:0088H.5       PUBLIC        TF0
-  C:0400H         PUBLIC        Timer0Init
+  C:0417H         PUBLIC        Timer0Init
   D:008CH         PUBLIC        TH0
   D:008AH         PUBLIC        TL0
   B:0088H.4       PUBLIC        TR0
@@ -167,28 +167,28 @@ SYMBOL TABLE OF MODULE:  .\OutList\SegScanByTimer (?C_STARTUP)
   D:0007H         SYMBOL        i
   D:0006H         SYMBOL        j
   -------         ENDDO         
-  C:0413H         LINE#         15
-  C:0413H         LINE#         16
-  C:0413H         LINE#         19
-  C:0414H         LINE#         20
-  C:0415H         LINE#         21
-  C:0416H         LINE#         22
-  C:0418H         LINE#         23
-  C:041AH         LINE#         25
-  C:041AH         LINE#         26
-  C:041CH         LINE#         27
-  C:041EH         LINE#         28
+  C:042AH         LINE#         15
+  C:042AH         LINE#         16
+  C:042AH         LINE#         19
+  C:042BH         LINE#         20
+  C:042CH         LINE#         21
+  C:042DH         LINE#         22
+  C:042FH         LINE#         23
+  C:0431H         LINE#         25
+  C:0431H         LINE#         26
+  C:0433H         LINE#         27
+  C:0435H         LINE#         28
   -------         ENDPROC       DELAY1MS
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/10/2017  23:22:47  PAGE 4
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/05/2017  12:24:55  PAGE 4
 
 
   -------         PROC          _DELAYMS
   D:0004H         SYMBOL        Dtime
-  C:03D3H         LINE#         32
-  C:03D7H         LINE#         33
-  C:03D7H         LINE#         34
-  C:03E0H         LINE#         35
-  C:03EAH         LINE#         36
+  C:03EAH         LINE#         32
+  C:03EEH         LINE#         33
+  C:03EEH         LINE#         34
+  C:03F7H         LINE#         35
+  C:0401H         LINE#         36
   -------         ENDPROC       _DELAYMS
   -------         PROC          MAIN
   C:0308H         LINE#         41
@@ -239,26 +239,26 @@ SYMBOL TABLE OF MODULE:  .\OutList\SegScanByTimer (?C_STARTUP)
   C:01D2H         LINE#         94
   C:01D4H         LINE#         95
   -------         ENDPROC       TIMER0_ROUNTINE
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/10/2017  23:22:47  PAGE 5
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/05/2017  12:24:55  PAGE 5
 
 
   -------         PROC          TIMER0INIT
-  C:0400H         LINE#         98
-  C:0400H         LINE#         99
-  C:0400H         LINE#         100
-  C:0403H         LINE#         101
-  C:0406H         LINE#         102
-  C:0409H         LINE#         103
-  C:040CH         LINE#         104
-  C:040EH         LINE#         105
-  C:0410H         LINE#         106
-  C:0412H         LINE#         107
+  C:0417H         LINE#         98
+  C:0417H         LINE#         99
+  C:0417H         LINE#         100
+  C:041AH         LINE#         101
+  C:041DH         LINE#         102
+  C:0420H         LINE#         103
+  C:0423H         LINE#         104
+  C:0425H         LINE#         105
+  C:0427H         LINE#         106
+  C:0429H         LINE#         107
   -------         ENDPROC       TIMER0INIT
   -------         ENDMOD        MAIN
 
   -------         MODULE        SEGLED
   C:0000H         SYMBOL        _ICE_DUMMY_
-  C:03A6H         PUBLIC        ScanSegLED
+  C:0363H         PUBLIC        ScanSegLED
   D:0093H         PUBLIC        P0M1
   D:0096H         PUBLIC        P2M0
   D:0080H         PUBLIC        P0
@@ -272,34 +272,34 @@ SYMBOL TABLE OF MODULE:  .\OutList\SegScanByTimer (?C_STARTUP)
   C:01EFH         PUBLIC        _LED_Show_int
   D:00F8H         PUBLIC        P7
   D:00A8H         PUBLIC        IE
-  C:0363H         PUBLIC        _Pow10
+  C:03A7H         PUBLIC        _Pow10
   D:00B8H         PUBLIC        IP
   D:00D8H         PUBLIC        CCON
   D:0017H         PUBLIC        DispBuf
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
   B:0090H.5       PUBLIC        P15
-  C:0429H         PUBLIC        SegTab
-  C:03EBH         PUBLIC        SegLED_Init
+  C:0440H         PUBLIC        SegTab
+  C:0402H         PUBLIC        SegLED_Init
   D:00D0H         PUBLIC        PSW
   D:0094H         PUBLIC        P0M0
   -------         PROC          SEGLED_INIT
   -------         DO            
   D:0007H         SYMBOL        i
   -------         ENDDO         
-  C:03EBH         LINE#         26
-  C:03EBH         LINE#         27
-  C:03EBH         LINE#         28
-  C:03ECH         LINE#         30
-  C:03EEH         LINE#         31
-  C:03F1H         LINE#         33
-  C:03F3H         LINE#         34
-  C:03F6H         LINE#         36
-  C:03F6H         LINE#         37
-  C:03F6H         LINE#         38
-  C:03FFH         LINE#         39
-  C:03FFH         LINE#         41
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/10/2017  23:22:47  PAGE 6
+  C:0402H         LINE#         26
+  C:0402H         LINE#         27
+  C:0402H         LINE#         28
+  C:0403H         LINE#         30
+  C:0405H         LINE#         31
+  C:0408H         LINE#         33
+  C:040AH         LINE#         34
+  C:040DH         LINE#         36
+  C:040DH         LINE#         37
+  C:040DH         LINE#         38
+  C:0416H         LINE#         39
+  C:0416H         LINE#         41
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/05/2017  12:24:55  PAGE 6
 
 
   -------         ENDPROC       SEGLED_INIT
@@ -307,31 +307,35 @@ SYMBOL TABLE OF MODULE:  .\OutList\SegScanByTimer (?C_STARTUP)
   -------         DO            
   D:0016H         SYMBOL        ScanCnt
   -------         ENDDO         
-  C:03A6H         LINE#         45
-  C:03A6H         LINE#         46
-  C:03A6H         LINE#         50
-  C:03A8H         LINE#         51
-  C:03B3H         LINE#         52
-  C:03C3H         LINE#         53
-  C:03C5H         LINE#         54
-  C:03D2H         LINE#         56
+  C:0363H         LINE#         45
+  C:0363H         LINE#         46
+  C:0363H         LINE#         50
+  C:0366H         LINE#         51
+  C:0368H         LINE#         52
+  C:036AH         LINE#         53
+  C:0375H         LINE#         54
+  C:0385H         LINE#         55
+  C:0387H         LINE#         56
+  C:0397H         LINE#         57
+  C:0399H         LINE#         58
+  C:03A6H         LINE#         60
   -------         ENDPROC       SCANSEGLED
   -------         PROC          _POW10
   D:0011H         SYMBOL        x
   -------         DO            
   D:0012H         SYMBOL        rValue
   -------         ENDDO         
-  C:0363H         LINE#         58
-  C:0365H         LINE#         59
-  C:0365H         LINE#         60
-  C:036FH         LINE#         61
-  C:0373H         LINE#         62
-  C:0379H         LINE#         63
-  C:0380H         LINE#         64
-  C:0380H         LINE#         65
-  C:0399H         LINE#         66
-  C:039DH         LINE#         67
-  C:03A5H         LINE#         69
+  C:03A7H         LINE#         62
+  C:03A9H         LINE#         63
+  C:03A9H         LINE#         64
+  C:03B3H         LINE#         65
+  C:03B7H         LINE#         66
+  C:03BDH         LINE#         67
+  C:03C4H         LINE#         68
+  C:03C4H         LINE#         69
+  C:03DDH         LINE#         70
+  C:03E1H         LINE#         71
+  C:03E9H         LINE#         73
   -------         ENDPROC       _POW10
   -------         PROC          _LED_SHOW_INT
   D:0008H         SYMBOL        num
@@ -341,27 +345,27 @@ SYMBOL TABLE OF MODULE:  .\OutList\SegScanByTimer (?C_STARTUP)
   D:000CH         SYMBOL        i
   D:000DH         SYMBOL        temp
   -------         ENDDO         
-  C:01EFH         LINE#         72
-  C:01F7H         LINE#         75
-  C:01F7H         LINE#         77
-  C:0200H         LINE#         78
-  C:020EH         LINE#         79
-  C:0218H         LINE#         80
-  C:0218H         LINE#         81
-  C:022AH         LINE#         82
-  C:0255H         LINE#         83
-  C:0264H         LINE#         84
-  C:0277H         LINE#         85
-  C:027BH         LINE#         88
+  C:01EFH         LINE#         76
+  C:01F7H         LINE#         79
+  C:01F7H         LINE#         81
+  C:0200H         LINE#         82
+  C:020EH         LINE#         83
+  C:0218H         LINE#         84
+  C:0218H         LINE#         85
+  C:022AH         LINE#         86
+  C:0255H         LINE#         87
+  C:0264H         LINE#         88
+  C:0277H         LINE#         89
+  C:027BH         LINE#         92
   -------         ENDPROC       _LED_SHOW_INT
   -------         ENDMOD        SEGLED
+BL51 BANKED LINKER/LOCATER V6.22                                                      03/05/2017  12:24:55  PAGE 7
+
+
 
   -------         MODULE        ?C?LMUL
   C:000EH         PUBLIC        ?C?LMUL
   -------         ENDMOD        ?C?LMUL
-BL51 BANKED LINKER/LOCATER V6.22                                                      01/10/2017  23:22:47  PAGE 7
-
-
 
   -------         MODULE        ?C?ULDIV
   C:0099H         PUBLIC        ?C?ULDIV
@@ -371,5 +375,5 @@ SYMBOL TABLE OF MODULE:  .\OutList\SegScanByTimer (?C_STARTUP)
   C:012BH         PUBLIC        ?C?ULCMP
   -------         ENDMOD        ?C?ULCMP
 
-Program Size: data=39.0 xdata=0 code=1067
+Program Size: data=39.0 xdata=0 code=1090
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
