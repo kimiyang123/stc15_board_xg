@@ -1,9 +1,9 @@
 #include <STC15f2K60S2.h>
 #include <intrins.h>
-#include "./src/DS1302.h"
-#include "./src/SegLED.h"
-#include "./src/sys_time.h"
-#include "../Lib_STC15_xg/inc/Keypad.h"
+#include "src/DS1302.h"
+#include "src/SegLED.h"
+#include "src/sys_time.h"
+#include "src/Keypad.h"
 
 
 void Timer0Init(void);

@@ -1,5 +1,0 @@
-".\OutList\STARTUP.obj",
-".\OutList\main.obj",
-".\OutList\SegLED.obj" 
-TO ".\OutList\SegScanByTimer" 
-PRINT(".\SegScanByTimer.m51") RAMSIZE(256) 

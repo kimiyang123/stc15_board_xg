@@ -377,14 +377,14 @@
               <FilePath>.\src\SegLED.c</FilePath>
             </File>
             <File>
-              <FileName>Keypad.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Lib_STC15_xg\src\Keypad.c</FilePath>
-            </File>
-            <File>
               <FileName>sys_time.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\src\sys_time.c</FilePath>
+            </File>
+            <File>
+              <FileName>Keypad.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\src\Keypad.c</FilePath>
             </File>
           </Files>
         </Group>

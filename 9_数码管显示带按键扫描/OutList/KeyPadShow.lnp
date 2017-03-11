@@ -1,7 +1,0 @@
-".\OutList\STARTUP.obj",
-".\OutList\main.obj",
-".\OutList\SegLED.obj",
-".\OutList\Keypad.obj",
-".\OutList\Uart.obj" 
-TO ".\OutList\KeyPadShow" 
-PRINT(".\KeyPadShow.m51") RAMSIZE(256) 
